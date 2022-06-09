@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -16,6 +16,6 @@ const STitle = styled.div`
   line-height: 60px;
 `;
 
-export const Title: FC<Props> = ({ text }) => {
+export const Title: FC<Props> = memo(({ text }) => {
   return <STitle>{text}</STitle>;
-};
+});

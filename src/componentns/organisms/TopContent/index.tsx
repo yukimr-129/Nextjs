@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 
 import { useCategory } from "../../../ hooks/categoryHooks";
@@ -9,7 +9,7 @@ import { Counter } from "../../molecules/Counter";
 import { TagArea } from "../../molecules/TagArea";
 import { Tech } from "../../molecules/Tech";
 
-export const TopContent: FC = memo(() => {
+export const TopContent: FC = () => {
   const { count, handleIncrement, handleDecrement, resetCount } = useCount();
   const { tag, tagList, handleClearTag, handlePushTag } = useTag();
   const { category } = useCategory();
@@ -59,7 +59,7 @@ export const TopContent: FC = memo(() => {
       </StContent>
     </StRoot>
   );
-});
+};
 
 const StRoot = styled.div`
   background-color: rgb(244, 244, 244);

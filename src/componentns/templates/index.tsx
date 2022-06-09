@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { FC, ReactNode } from "react";
+import { FC, memo, ReactNode } from "react";
 
 import { Footer } from "../organisms/Footer";
 import { Header } from "../organisms/Header";
@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const Template: FC<Props> = ({ title, children }) => {
+export const Template: FC<Props> = memo(({ title, children }) => {
   return (
     <div>
       <Head>
@@ -23,4 +23,4 @@ export const Template: FC<Props> = ({ title, children }) => {
       <Footer />
     </div>
   );
-};
+});

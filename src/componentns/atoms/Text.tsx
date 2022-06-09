@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -9,6 +9,6 @@ const SText = styled.p`
   font-size: 20px;
 `;
 
-export const Text: FC<Props> = ({ children }) => {
+export const Text: FC<Props> = memo(({ children }) => {
   return <SText>{children}</SText>;
-};
+});
