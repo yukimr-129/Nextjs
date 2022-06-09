@@ -22,8 +22,6 @@ export const useSkill = () => {
 
   const onCkickToggleSkill = useCallback(
     (skillId: number) => {
-      //   setSelect(skillId);
-      // const categoryId = e.currentTarget.getAttribute("data-categoryid");
       const judge = selectedSkill.some((val) => {
         return val.id === skillId;
       });

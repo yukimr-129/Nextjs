@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, memo } from "react";
+import { ChangeEvent, FC, memo, useCallback } from "react";
 import styled from "styled-components";
 
 import { Category } from "../../../pages/api/category";
@@ -22,26 +22,29 @@ export const Tech: FC<Props> = memo(
     onCkickToggleSkill,
     onCkickTagDelete,
   }) => {
-    const selectColor = (id: number) => {
-      let color;
-      switch (id) {
-        case 1:
-          color = "red";
-          break;
-        case 2:
-          color = "blue";
-          break;
-        case 3:
-          color = "green";
-          break;
-        case 4:
-          color = "#ff8c00";
-          break;
-        default:
-          break;
-      }
-      return color;
-    };
+    const selectColor = useCallback(
+      (id: number) => {
+        let color;
+        switch (id) {
+          case 1:
+            color = "red";
+            break;
+          case 2:
+            color = "blue";
+            break;
+          case 3:
+            color = "green";
+            break;
+          case 4:
+            color = "#ff8c00";
+            break;
+          default:
+            break;
+        }
+        return color;
+      },
+      [selectedSkill]
+    );
     return (
       <StWrapper>
         <StSelectedTagAreaWrapper>
@@ -91,7 +94,6 @@ export const Tech: FC<Props> = memo(
   }
 );
 
-const StClearButtton = styled.button``;
 const StWrapper = styled.div`
   display: flex;
 `;

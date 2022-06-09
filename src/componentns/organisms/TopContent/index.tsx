@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FC } from "react";
 import styled from "styled-components";
 
@@ -10,6 +11,8 @@ import { TagArea } from "../../molecules/TagArea";
 import { Tech } from "../../molecules/Tech";
 
 export const TopContent: FC = () => {
+  const router = useRouter();
+
   const { count, handleIncrement, handleDecrement, resetCount } = useCount();
   const { tag, tagList, handleClearTag, handlePushTag } = useTag();
   const { category } = useCategory();
@@ -26,6 +29,13 @@ export const TopContent: FC = () => {
       <StTitle>
         <h1>react初心者向け講座</h1>
       </StTitle>
+      <StButton
+        onClick={() => {
+          router.push("/search");
+        }}
+      >
+        検索画面へ
+      </StButton>
       <StContent>
         <StArticle>
           <StArticleTitle>カウント</StArticleTitle>
@@ -60,6 +70,14 @@ export const TopContent: FC = () => {
     </StRoot>
   );
 };
+
+const StButton = styled.button`
+  margin: 16px;
+  border-radius: 3px;
+  background-color: rgb(27, 161, 255);
+  color: #fff;
+  padding: 8px;
+`;
 
 const StRoot = styled.div`
   background-color: rgb(244, 244, 244);
