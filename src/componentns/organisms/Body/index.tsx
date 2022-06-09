@@ -7,7 +7,7 @@ const SBody = styled.div`
   background-color: rgb(244, 244, 244);
   padding: 20px;
   width: auto;
-  height: 100vh;
+  height: 700px;
 `;
 
 export const Body: FC = () => {

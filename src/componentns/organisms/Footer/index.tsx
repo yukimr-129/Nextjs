@@ -15,5 +15,5 @@ const StFooterRoot = styled.footer`
   background-color: #000000;
   color: rgb(255, 255, 255);
   width: 100%;
-  height: 50px;
+  height: auto;
 `;

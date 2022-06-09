@@ -21,10 +21,13 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body {
+    margin: 0;
+    padding: 0;
     color: #222;
     font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ',
       Meiryo, sans-serif;
     font-size: 16px;
+    height: 100%;
   }
 
   ol,
