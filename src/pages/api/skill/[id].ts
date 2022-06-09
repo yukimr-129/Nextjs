@@ -81,10 +81,15 @@ const map = new Map([
   ["skill4", skill4],
 ]);
 
+// const skills = [skill1, skill2, skill3, skill4];
+
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  //   const { skillId } = req.query;
-  if (req.query.id !== "0") {
-    const skillName = `skill${Number(req.query.id)}`;
+  const query = Number(req.query.id);
+  if (query !== 0) {
+    // const selectSkill = skills.find((skill, i) => {
+    //   return skill[i].categoryId === query;
+    // });
+    const skillName = `skill${query}`;
     const selectSkill = map.get(skillName);
     res.status(200).json(selectSkill);
   } else {

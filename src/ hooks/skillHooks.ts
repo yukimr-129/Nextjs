@@ -1,6 +1,6 @@
 import { ChangeEvent, useCallback, useState } from "react";
 
-import { Skill } from "../../../pages/api/skill/[id]";
+import { Skill } from "../pages/api/skill/[id]";
 
 export const useSkill = () => {
   const [skill, setSkill] = useState<Skill[]>([]);

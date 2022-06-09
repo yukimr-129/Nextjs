@@ -1,11 +1,10 @@
 import { FC, memo } from "react";
 import styled from "styled-components";
 
-import { useCategory } from "./categoryHooks";
-import { useCount } from "./hooks";
-import { useSkill } from "./skillHooks";
-import { useTag } from "./tagHooks";
-
+import { useCategory } from "../../../ hooks/categoryHooks";
+import { useCount } from "../../../ hooks/hooks";
+import { useSkill } from "../../../ hooks/skillHooks";
+import { useTag } from "../../../ hooks/tagHooks";
 import { Counter } from "../../molecules/Counter";
 import { TagArea } from "../../molecules/TagArea";
 import { Tech } from "../../molecules/Tech";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Category } from "../../../pages/api/category";
+import { Category } from "../pages/api/category";
 
 export const useCategory = () => {
   const [category, setCategory] = useState<Category[]>([]);
