@@ -5,79 +5,63 @@ import {
   Dispatch,
   FC,
   ReactNode,
-  SetStateAction,
-  useCallback,
   useContext,
   useReducer,
-  useState,
 } from "react";
 import styled from "styled-components";
 
-import { AAA, Search } from "../../componentns/organisms/search";
+import { Search } from "../../componentns/organisms/search";
 import { Template } from "../../componentns/templates";
 import { Category } from "../api/category";
 
+// Contextの型
 export type SearchConditionType = {
   displayCategoryList: Category[];
 };
 
 export type DispatchSearchConditionType = Dispatch<Action>;
 
+// 参照系
 const defaultState: SearchConditionType = {
   displayCategoryList: [],
 };
 
-const defaultSetValue: DispatchSearchConditionType = () => {};
-
-// export type SearchConditionType = {
-//   displayCategoryList: Category[];
-// };
-
-// const defaultValue: SearchConditionType = {
-//   displayCategoryList: [],
-// };
-
-// export type DispatchSearchConditionType = {
-//   handleCategoryList: (category: Category) => void;
-// };
-
-// const dispatchDefaultValue: DispatchSearchConditionType = {
-//   handleCategoryList: () => {},
-// };
-
 const SerchConditionContext = createContext<SearchConditionType>(defaultState);
+export const useSerchCondition = () => useContext(SerchConditionContext);
+
+// 更新系
+const defaultSetValue: DispatchSearchConditionType = () => {};
 const DispatchSerchConditionContext =
   createContext<DispatchSearchConditionType>(defaultSetValue);
 
-export const useSerchCondition = () => useContext(SerchConditionContext);
 export const useDispatchSearchCondition = () =>
   useContext(DispatchSerchConditionContext);
 
 type Props = {
-  // eslint-disable-next-line react/no-unused-prop-types
   initialState?: SearchConditionType;
   children: ReactNode;
 };
 
+// Action
 type Action =
-  | { type: "UPDATE_CATEGORY_LIST"; category: Category }
+  | { type: "UPDATE_CATEGORY_LIST"; categoryItem: Category }
   | { type: "RESET_CATEGORY_LIST" };
 
+// Reducer関数
 const reducer = (state: SearchConditionType, action: Action) => {
   switch (action.type) {
-    case "UPDATE_CATEGORY_LIST":
+    case "UPDATE_CATEGORY_LIST": {
       if (
-        state.displayCategoryList.some((cl) => cl.id === action.category.id)
+        state.displayCategoryList.some((cl) => cl.id === action.categoryItem.id)
       ) {
         const tempCategory = state.displayCategoryList.filter(
-          (cl) => cl.id !== action.category.id
+          (cl) => cl.id !== action.categoryItem.id
         );
         return { ...state, displayCategoryList: tempCategory };
       }
-      // eslint-disable-next-line no-case-declarations
-      const tempCategory = [...state.displayCategoryList, action.category];
+      const tempCategory = [...state.displayCategoryList, action.categoryItem];
       return { ...state, displayCategoryList: tempCategory };
-
+    }
     case "RESET_CATEGORY_LIST":
       return { ...state, displayCategoryList: [] };
     default:
@@ -90,6 +74,7 @@ const useSearchCore = (initialState?: SearchConditionType) => {
   return { state, dispatch };
 };
 
+// カスタムプロバイダー
 const SearchConditionProvider: FC<Props> = ({ initialState, children }) => {
   const { state, dispatch } = useSearchCore(initialState);
   return (
@@ -102,6 +87,8 @@ const SearchConditionProvider: FC<Props> = ({ initialState, children }) => {
 };
 
 const TestPage: NextPage = () => {
+  console.log(0 ?? "実行");
+
   return (
     <SearchConditionProvider>
       <Template title="検索">

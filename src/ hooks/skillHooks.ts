@@ -8,10 +8,13 @@ export const useSkill = () => {
 
   const changeSelectCategory = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
+      if (Number(e.target.value) === 0) {
+        setSkill([]);
+        return;
+      }
       const getSkills = async () => {
         const res = await fetch(`/api/skill/${e.target.value}`);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const data: Skill[] = await res.json();
+        const data = (await res.json()) as Skill[];
         setSkill(data);
       };
 

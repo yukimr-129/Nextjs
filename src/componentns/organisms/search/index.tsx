@@ -27,6 +27,7 @@ export const Search: FC<Props> = () => {
         </StBox>
       </StWrapper>
       <AAA />
+      <BBB />
     </>
   );
 };
@@ -36,9 +37,8 @@ export const CategoryList: FC<Props> = () => {
 
   const dispatch = useDispatchSearchCondition();
   console.log("List");
-  // eslint-disable-next-line no-shadow
-  const handleCLick = (category: Category) => {
-    dispatch({ type: "UPDATE_CATEGORY_LIST", category });
+  const handleCLick = (categoryItem: Category) => {
+    dispatch({ type: "UPDATE_CATEGORY_LIST", categoryItem });
   };
   return (
     <ul>
@@ -72,7 +72,12 @@ export const AAA = () => {
     dispatch({ type: "RESET_CATEGORY_LIST" });
   };
   // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-  return <div onClick={handleClick}>aaaaaa</div>;
+  return <div onClick={handleClick}>Reset</div>;
+};
+
+const BBB: FC = () => {
+  console.log("bbbbb");
+  return <div>bbbb</div>;
 };
 
 const StBox = styled.div`

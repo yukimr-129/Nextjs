@@ -29,8 +29,7 @@ export const useTag = () => {
   useEffect(() => {
     const getTag = async () => {
       const res = await fetch("/api/tag");
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const data: TagList = await res.json();
+      const data: TagList = (await res.json()) as TagList;
 
       setTagList(data);
     };
